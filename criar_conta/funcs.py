@@ -49,7 +49,14 @@ def passwordVerificator(password):
 
 
 def entrar(contas_no_sistema):
-    email = input('Digite seu e-mail para login: ')
+
+    erro = True
+    while erro:
+        email = input('E-mail de login: ')
+        if validador_email(email):
+            erro = False
+        else:
+            print('\n⚠️ E-mail inválido! Por favor, insira um e-mail válido.')
 
     if email in contas_no_sistema:
         password = pwinput.pwinput(prompt = 'Digite sua senha: ')
@@ -60,6 +67,6 @@ def entrar(contas_no_sistema):
 
         print('\n✔️ Bem-vindo à sua conta! 🎉')
     
+    else:
+        print('\nEmail nao cadastrado! Insira um e-mail válido ou cadastre um novo e-mail')
     
-
-
