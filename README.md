@@ -78,3 +78,21 @@ Digite sua senha: ********
 
 Escolha uma opção (1, 2, 3): 3
 👋 Saindo... Até logo!
+```
+
+### Observações ⚠️
+
+- **Armazenamento Temporário**: O sistema usa um dicionário para armazenar as contas de usuários apenas enquanto o programa está em execução. Após o encerramento do programa, todos os dados são perdidos.
+- **Requisitos**: Este sistema foi criado com conhecimentos básicos de programação e não possui persistência de dados. Em uma versão futura, poderíamos implementar a persistência em arquivos ou banco de dados.
+
+### Melhorias Futuras ✨
+
+- **Persistência de Dados**: Implementar a capacidade de salvar as contas em arquivos (por exemplo, um arquivo JSON ou banco de dados) para que os dados sejam mantidos entre as execuções do programa.
+- **Recuperação de Senha**: Adicionar uma funcionalidade de recuperação de senha para ajudar usuários a resetarem suas senhas caso esqueçam.
+- **Validação de E-mail**: Melhorar a validação do e-mail para garantir que seja um formato válido antes de criar a conta.
+
+### Como Contribuir 🤝
+
+- **Sugestões e Melhorias**: Se você tem sugestões ou melhorias para o código, fique à vontade para abrir uma _issue_ ou fazer um _pull request_ com as suas contribuições!
+- **Fork**: Faça um _fork_ deste repositório e crie sua própria versão com melhorias!
+
