@@ -18,8 +18,11 @@ def criar_conta(contas_no_sistema):
     while erro:
         password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
         strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$'
-        while not re.match(strong_password, password):
-            print('\n⚠️ Senha fraca! A senha deve conter:\n\t- Pelo menos uma letra maiúscula\n\t- Pelo menos uma letra minúscula\n\t- Pelo menos um caractere especial')
+        caracteres = len(password)
+        print(caracteres)
+
+        while not re.match(strong_password, password) and caracteres < 8:
+            print('\n⚠️ Senha fraca! A senha deve conter:\n\t- Pelo menos uma letra maiúscula\n\t- Pelo menos uma letra minúscula\n\t- Pelo menos um caractere especial\n\t- No mínimo 8 caracteres')
             password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
 
         if passwordVerificator(password):
