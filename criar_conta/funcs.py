@@ -2,7 +2,6 @@
 import pwinput
 import re
 
-
 ###################
 
 # 1. CRIAR CONTA
@@ -22,11 +21,11 @@ def criar_conta(contas_no_sistema):
     erro = True
     while erro:
         password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
-        strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$'
+        strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$'
 
-        caracteres = len(password)
+        # caracteres = len(password)
 
-        while not re.match(strong_password, password) and caracteres < 8:
+        while not re.match(strong_password, password):      #and caracteres < 8:
             print('\n⚠️ Senha fraca! A senha deve conter:\n\t- Pelo menos uma letra maiúscula\n\t- Pelo menos uma letra minúscula\n\t- Pelo menos um caractere especial\n\t- No mínimo 8 caracteres')
             password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
 
@@ -35,7 +34,7 @@ def criar_conta(contas_no_sistema):
             erro = False
 
     contas_no_sistema[email] = conta
-    print('\nConta criada com sucesso! 🎉\n')     
+    print('\nConta criada com sucesso! 🎉\n')        
             
 
 
@@ -71,6 +70,21 @@ def passwordVerificator(password):
 
 ###################
 
+# 2.1 VALIDAR ENTRADA
+
+
+def validador_entrada(opcoes_validas, entrada):
+        if entrada not in opcoes_validas:
+            print('\n⚠️ Opção inválida! Por favor, escolha uma das opões fornecidas\n')
+            return False
+        else:
+            return True
+
+
+
+
+###################
+
 # 2. ENTRAR
 
 
@@ -87,14 +101,68 @@ def entrar(contas_no_sistema):
     if email in contas_no_sistema:
         password = pwinput.pwinput(prompt = 'Digite sua senha: ')
 
+        count = 1
         while password != contas_no_sistema[email]['senha']:
             print('\n⚠️ Senha incorreta. Tente novamente.')
             password = pwinput.pwinput(prompt = 'Digite sua senha: ')
+            count += 1
+
+            if count == 3:
+
+                validador = False
+
+                while not validador:
+                    decisao = input('Deseja recuperar sua senha? (s/n): ').lower()
+                    opcoes = {'s', 'n'}
+                    validador = validador_entrada(opcoes, decisao)
+
+                if decisao == 's':
+                    recuperar_senha(contas_no_sistema)
+                    break
+                else:
+                    return 
+
 
         print('\n✔️ Bem-vindo à sua conta! 🎉')
     
     else:
         print('\nEmail nao cadastrado! Insira um e-mail válido ou cadastre um novo e-mail')
-    
+
+
+
+
+###################
+
+# 3. RECUPERAR SENHA
+
+
+def recuperar_senha(contas_no_sistema):
+    erro = True
+    while erro:
+        email = input('E-mail de login: ')
+        if validador_email(email):
+            erro = False
+        else:
+            print('\n⚠️ E-mail inválido! Por favor, insira um e-mail válido.')
+
+    while email not in contas_no_sistema:
+        print('\nEmail nao cadastrado! Insira um e-mail válido')
+        email = input('E-mail de login: ')
+
+
+    erro = True
+    while erro:
+        password = pwinput.pwinput(prompt = 'Nova senha: ')
+        strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$'
+
+        caracteres = len(password)
+
+        while not re.match(strong_password, password) and caracteres < 8:
+            print('\n⚠️ Senha fraca! A senha deve conter:\n\t- Pelo menos uma letra maiúscula\n\t- Pelo menos uma letra minúscula\n\t- Pelo menos um caractere especial\n\t- No mínimo 8 caracteres')
+            password = pwinput.pwinput(prompt = 'Crie uma nova senha segura: ')
+
+        if passwordVerificator(password):
+            contas_no_sistema[email]['senha'] = password
+            erro = False
 
     
