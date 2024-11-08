@@ -3,6 +3,11 @@ import pwinput
 import re
 
 
+###################
+
+# 1. CRIAR CONTA
+
+
 def criar_conta(contas_no_sistema):
     conta = {}
 
@@ -18,7 +23,7 @@ def criar_conta(contas_no_sistema):
     while erro:
         password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
         strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$'
-        
+
         caracteres = len(password)
 
         while not re.match(strong_password, password) and caracteres < 8:
@@ -34,9 +39,21 @@ def criar_conta(contas_no_sistema):
             
 
 
+
+###################
+
+# 1.1. VALIDAR EMAIL
+
+
 def validador_email(email):
     return '@' in email and '.' in email.split('@')[-1] 
 
+
+
+
+###################
+
+# 1.2. VALIDAR SENHA
 
 
 def passwordVerificator(password):
@@ -49,6 +66,12 @@ def passwordVerificator(password):
 
     return True
 
+
+
+
+###################
+
+# 2. ENTRAR
 
 
 def entrar(contas_no_sistema):
@@ -72,4 +95,6 @@ def entrar(contas_no_sistema):
     
     else:
         print('\nEmail nao cadastrado! Insira um e-mail válido ou cadastre um novo e-mail')
+    
+
     
