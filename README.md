@@ -19,6 +19,7 @@ Bem-vindo ao **Sistema de Contas**, uma aplicação simples para criação e log
   - Pelo menos um caractere especial (ex: `@`, `#`, `!`, etc.).
   
 - **Fazer Login**: Depois de criar sua conta, você pode acessar o sistema fazendo login com o seu e-mail e senha.
+  - Recuperar a senha em casos de mais de 3 erros ao logar.
 
 - **Sair do Sistema**: Caso queira sair, basta selecionar a opção "Sair" e o sistema será encerrado.
 
@@ -39,6 +40,7 @@ Bem-vindo ao **Sistema de Contas**, uma aplicação simples para criação e log
 3. **Login**:
    - Se você já tem uma conta, pode fazer login fornecendo o e-mail e a senha.
    - Se o login for bem-sucedido, o sistema dará as boas-vindas!
+   - Se houver mais de 3 erros ao fornecer a senha, é disponibilizada a opção de Recuperar senha.
 
 4. **Sair**:
    - Para sair do sistema, basta escolher a opção "Sair" e o sistema será encerrado com uma mensagem de despedida.
