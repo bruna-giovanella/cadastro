@@ -19,22 +19,25 @@ def criar_conta(contas_no_sistema):
         else:
             count += 1
             if count == 3:
-                print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                 return
+            
             print('\n⚠️ E-mail inválido! Por favor, insira um e-mail válido.')
+
 
     erro = True
     while erro:
         password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
         strong_password = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$'
 
+        # caracteres = len(password)
         count = 0
-        while not re.match(strong_password, password):     
+        while not re.match(strong_password, password):      #and caracteres < 8:
             print('\n⚠️ Senha fraca! A senha deve conter:\n\t- Pelo menos uma letra maiúscula\n\t- Pelo menos uma letra minúscula\n\t- Pelo menos um caractere especial\n\t- No mínimo 8 caracteres')
             password = pwinput.pwinput(prompt = 'Crie uma senha segura: ')
             count += 1
             if count == 3:
-                print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                 return
 
         if passwordVerificator(password):
@@ -75,9 +78,9 @@ def passwordVerificator(password):
         passwordConfirm = pwinput.pwinput(prompt = 'Confirme sua senha: ')
         count += 1
         if count == 3:
-            print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+            print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
             return 
-    print('\n✔️ Senha confirmada com sucesso!')
+    print('\n✔️  Senha confirmada com sucesso!')
 
     return True
 
@@ -108,15 +111,15 @@ def entrar(contas_no_sistema):
 
     erro = True
     count = 0
-    
-    while erro:    
+    while erro:
+        
         email = input('E-mail de login: ').lower()
         if validador_email(email):
             erro = False
         else:
             count += 1
             if count == 4:
-                print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                 return
             
             print('\n⚠️ E-mail inválido! Por favor, insira um e-mail válido.')
@@ -142,7 +145,7 @@ def entrar(contas_no_sistema):
                     validador = validador_entrada(opcoes, decisao)
                     count += 1
                     if count == 3:
-                        print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                        print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                         return
 
 
@@ -152,10 +155,11 @@ def entrar(contas_no_sistema):
                 else:
                     return 
 
+
         print('\n✔️ Bem-vindo à sua conta! 🎉')
     
     else:
-        print('\nEmail nao cadastrado! Insira um e-mail válido ou cadastre um novo e-mail')
+        print('\n🚨 Email nao cadastrado! Insira um e-mail válido ou cadastre um novo e-mail')
 
 
 
@@ -167,27 +171,25 @@ def entrar(contas_no_sistema):
 
 def recuperar_senha(contas_no_sistema):
     erro = True
-     = 0
-    
+    count = 0
     while erro:
         email = input('E-mail de login: ').lower()
         if validador_email(email):
             erro = False
         else:
             print('\n⚠️ E-mail inválido! Por favor, insira um e-mail válido.')
-            count += 1
+            count+=1
             if count == 3:
-                print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                 return
 
     count = 0
-    
     while email not in contas_no_sistema:
         print('\nEmail nao cadastrado! Insira um e-mail válido')
         email = input('E-mail de login: ').lower()
-        count += 1
+        count+=1
         if count == 3:
-            print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+            print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
             return
 
 
@@ -205,12 +207,10 @@ def recuperar_senha(contas_no_sistema):
 
             count += 1
             if count == 3:
-                print('\n\tVocê excedeu o limite de tentativas\n\tVoltando ao menu...')
+                print('\n\t🚨 Você excedeu o limite de tentativas\n\tVoltando ao menu...')
                 return
 
 
         if passwordVerificator(password):
             contas_no_sistema[email]['senha'] = password
             erro = False
-
-    
