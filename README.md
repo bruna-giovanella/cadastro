@@ -92,6 +92,7 @@ Escolha uma opção (1, 2, 3): 3
 - **Persistência de Dados**: Implementar a capacidade de salvar as contas em arquivos (por exemplo, um arquivo JSON ou banco de dados) para que os dados sejam mantidos entre as execuções do programa.
 - **Recuperação de Senha**: Adicionar uma funcionalidade de recuperação de senha para ajudar usuários a resetarem suas senhas caso esqueçam.
 - **Validação de E-mail**: Melhorar a validação do e-mail para garantir que seja um formato válido antes de criar a conta.
+- **Organização do Código**: Organizar a estrutura do código para que não haja repetições desnecessárias e aperfeiçoar a distribuição e visualização, de acordo com os princípios de Clean Code.
 
 ### Como Contribuir 🤝
 
